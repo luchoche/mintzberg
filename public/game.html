@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Leaderboard</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <link href="assets/css/game.css" rel="stylesheet">
+  <style>
+    .capa{
+      width: 80%;
+      height: 80%;
+      left: 8%;
+      top: 8%;
+      border-radius: 20px;
+      border: 2px #999 solid;
+      position: absolute;
+      background-color: white;
+      box-shadow: 10px 5px 5px black;
+    }
+    #graficos{
+      display:none;
+    }
+    #graficos img{
+      height: 250px;
+      position: absolute;
+    }
+    #graficos1{
+      left:50px;
+    }
+    #graficos2{
+      left:400px;
+    }
+    #graficos3{
+      left:650px;
+    }
+    #graficos4{
+      left:400px;
+      top:260px;
+    }
+    #graficos5{
+      left:650px;
+      top:260px;
+    }
+    #graficos0{
+      left:50px;
+      top:260px;
+    }
+    #presentacion{
+      display: none;
+    }
+    #presentacion img{
+      width: 250px;
+      position: absolute;
+      top: 30px;
+    }
+    #mintzberg{
+      left:20px;
+    }
+    #librom{
+      left:280px;
+    }
+    #schlemenson{
+      left: 560px;
+    }
+    #libros{
+      left: 820px;
+    }
+    #sigmund{
+      position: absolute;
+      padding: 15px;
+      width:auto;
+      height: 50px;
+      border-radius: 20px;
+      border: 2px #999 solid;
+      position: absolute;
+      background-color: #ccc;
+      box-shadow: 10px 5px 5px black;
+      display: none;
+    }
+    #qr{
+      left:35%;
+      padding: 15px;
+      width:auto;
+      height: auto;
+      border-radius: 20px;
+      border: 2px #999 solid;
+      position: absolute;
+      background-color: #fff;
+      box-shadow: 10px 5px 5px #999;
+      display: none;
+    }
+    #qr p{
+      font-size: 20px;
+    }
+    #qr img{
+      width: 400px;
+    }
+  </style>
+  <script>
+    $(document).ready(function(e){
+      var grafok = true;
+      $(document).keydown(function(d){
+        if(d.keyCode === 82){
+          if(grafok){
+            $('#graficos').css('display', 'block');
+            grafok = false;
+          }else{
+            $('#graficos').css('display', 'none');
+            grafok = true;
+          }
+        }
+        if(d.keyCode === 69){
+          if(grafok){
+            $('#presentacion').css('display', 'block');
+            grafok = false;
+          }else{
+            $('#presentacion').css('display', 'none');
+            grafok = true;
+          }
+        }
+        if(d.keyCode === 84){
+          if(grafok){
+            $('#sigmund').css('display', 'block');
+            grafok = false;
+          }else{
+            $('#sigmund').css('display', 'none');
+            grafok = true;
+          }
+        }
+        if(d.keyCode === 65){
+          if(grafok){
+            $('#qr').css('display', 'block');
+            grafok = false;
+          }else{
+            $('#qr').css('display', 'none');
+            grafok = true;
+          }
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="qr">
+    <img src="assets/images/qr.png" alt="">
+    <p>https://mintzberg.herokuapp.com/game.html</p>
+  </div>
+  <div id="sigmund">
+    Sigmund S.A.
+  </div>
+  <div id="graficos" class="capa">
+    <img id="graficos0" src="assets/images/estructura_general.jpg" alt="">
+    <img id="graficos1" src="assets/images/estructura_1.jpg" alt="">
+    <img id="graficos2" src="assets/images/estructura_2.jpg" alt="">
+    <img id="graficos3" src="assets/images/estructura_3.jpg" alt="">
+    <img id="graficos4" src="assets/images/estructura_4.jpg" alt="">
+    <img id="graficos5" src="assets/images/estructura_5.jpg" alt="">
+  </div>
+  <div id="presentacion" class="capa">
+    <a href="https://twitter.com/Mintzberg141">
+      <img id="mintzberg" src="assets/images/mintzberg.jpg" alt="">
+    </a>
+    <img id="librom" src="assets/images/libro_mintzberg.jpg" alt="">
+    <img id="schlemenson" src="assets/images/schlemenson.jpg" alt="">
+    <img id="libros" src="assets/images/schlemensonlibro.jfif" alt="">
+  </div>
+  <div class="flex-container">
+    <div id="content"></div>
+    <!-- <div id="chatContainer">
+      <div class="chatArea">
+        <ul id="messages" class="messages"></ul>
+      </div>
+      <input id='inputMessage' class="inputMessage" placeholder="Type here..." type="text">
+    </div> -->
+  </div>
+  <script src="assets/js/game.js"></script>
+</body>
+
+</html>
